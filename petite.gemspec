@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Petite MVC Framework}
   spec.description   = %q{Petite Framework}
-  spec.homepage      = "www.github.com/andela-atemitope/petite"
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
