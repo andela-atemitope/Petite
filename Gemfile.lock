@@ -2,7 +2,9 @@ PATH
   remote: .
   specs:
     petite (0.1.0)
+      bundler (~> 1.11)
       rack
+      tilt
 
 GEM
   remote: https://rubygems.org/
@@ -10,12 +12,12 @@ GEM
     minitest (5.8.3)
     rack (1.6.4)
     rake (10.5.0)
+    tilt (2.0.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.11)
   minitest (~> 5.0)
   petite!
   rake (~> 10.0)
