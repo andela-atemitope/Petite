@@ -27,8 +27,7 @@ module Petite
 
     def render_template(view_name, locals = {})
       view_file = Tilt.new(File.join("app", "views", controller_name, "#{view_name}.erb"))
-      #template = File.read(view_filename)
-      #Initiate Template render methods for controllers here
+      template = File.read(view_file)
 
       variables = {}
       instance_variables.each do |var|
@@ -36,11 +35,25 @@ module Petite
         variables[key] = instance_variable_get(var)
       end
 
-      #Initialize template engine here
+      Tilt::ERBTemplate.new(filename).render(self, locals.merge(variables))
     end
 
     def controller_name
       self.class.to_s.gsub(/Controller$/, "").to_snake_case
+    end
+
+    def dispatch(action)
+      content = self.send(action)
+      if get_response
+        get_response
+      else
+        render(action)
+        get_response
+      end
+    end
+
+    def self.action(action_name)
+      -> (env) { self.new(env).dispatch(action_name) }
     end
   end
 end
