@@ -2,29 +2,28 @@ require "petite/version"
 require "petite/controller.rb"
 require "petite/dependencies.rb"
 require "petite/utilities.rb"
+require "petite/route.rb"
+require "pry"
 
 
 module Petite
   class Application
+    attr_reader :request
     def call(env)
-      if env["PATH_INFO"] == "/"
-        return [ 302, { "Location" => "/todo/index"}, []]
-      end
-
+      @request = Rack::Request.new(env)
       if env["PATH_INFO"] == "/favicon.ico"
         return [ 500, {}, [] ]
       end
-
-      controller_class, action = get_controller_and_action(env)
-      controller = controller_class.new(env)
-      response = controller.send(action)
+      # require "pry"; binding.pry
+      get_rack_app(request)
     end
 
-    def get_controller_and_action(env)
-      _, controller_name, action = env["PATH_INFO"].split("/")
+    def route
+      @router ||= Petite::Router.new
+    end
 
-      controller_name =  controller_name.to_camel_case + "Controller"
-      [ Object.const_get(controller_name), action ]
+    def get_rack_app(request)
+      @router.check_url(request)
     end
   end
 end

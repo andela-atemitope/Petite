@@ -1,12 +1,11 @@
-require "tilt"
-require "erb"
+require "tilt/erb"
 
 module Petite
   class Controller
-    attr_reader :request
+    attr_reader :request, :response
 
-    def initialize(env)
-      @request ||= Rack::Request.new(env)
+    def initialize(request)
+      @request ||= request
     end
 
     def params
@@ -26,16 +25,23 @@ module Petite
     end
 
     def render_template(view_name, locals = {})
-      view_file = Tilt.new(File.join("app", "views", controller_name, "#{view_name}.erb"))
-      template = File.read(view_file)
+      layout_template = Tilt::ERBTemplate.new(File.join($:.first, "app", "views",
+                                             "layouts", "application.html.erb"))
+      template_title = view_name.to_s.tr("_"," ").capitalize
+      # view = "#{view_name}.html.erb"
+      view_template = Tilt::ERBTemplate.new(File.join($:.first, "app", "views", controller_name, "#{view_name}.html.erb"))
+      layout_template.render(self, title: template_title) do
+        view_template.render(self, locals.merge!(access_variables))
+      end
+    end
 
+    def access_variables
       variables = {}
       instance_variables.each do |var|
         key = var.to_s.gsub("@", "").to_sym
         variables[key] = instance_variable_get(var)
       end
-
-      Tilt::ERBTemplate.new(filename).render(self, locals.merge(variables))
+      variables
     end
 
     def controller_name
@@ -44,16 +50,12 @@ module Petite
 
     def dispatch(action)
       content = self.send(action)
-      if get_response
-        get_response
-      else
-        render(action)
-        get_response
-      end
+      render(action) unless get_response
+      get_response
     end
 
-    def self.action(action_name)
-      -> (env) { self.new(env).dispatch(action_name) }
+    def self.action(request, action_name)
+      new(request).dispatch(action_name)
     end
   end
 end
