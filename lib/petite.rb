@@ -1,20 +1,18 @@
-require "petite/version"
-require "petite/controller.rb"
-require "petite/dependencies.rb"
-require "petite/utilities.rb"
-require "petite/route.rb"
-require "pry"
-
+require 'petite/version'
+require 'petite/controller.rb'
+require 'petite/dependencies.rb'
+require 'petite/utilities.rb'
+require 'petite/route.rb'
+require 'petite/resources.rb'
+require 'petite/orm.rb'
+require 'pry'
 
 module Petite
   class Application
     attr_reader :request
     def call(env)
       @request = Rack::Request.new(env)
-      if env["PATH_INFO"] == "/favicon.ico"
-        return [ 500, {}, [] ]
-      end
-      # require "pry"; binding.pry
+      return [500, {}, []] if env['PATH_INFO'] == '/favicon.ico'
       get_rack_app(request)
     end
 
