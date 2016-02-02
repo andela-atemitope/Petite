@@ -1,15 +1,15 @@
 module Petite
-
   class Router
     attr_reader :routes
     def initialize
-      @routes = Hash.new { |hash, key| hash[key] =  [] }
+      @routes = Hash.new { |hash, key| hash[key] = [] }
     end
 
     def self.match(*verbs)
       verbs.each do |verb|
-        define_method(verb) do |path, option ={}|
-          url_parts = path.split("/")
+
+        define_method(verb) do |path, option = {}|
+          url_parts = path.split('/')
           url_parts.select! { |part| !part.empty? }
           placeholders = []
           regexp_parts = url_parts.map do |part|
@@ -29,15 +29,16 @@ module Petite
     end
 
     def get_placeholder(placeholders, part)
-      if part[0] == ":"
-          placeholders << part[1..-1]
-          "([A-Za-z0-9_]+)"
-        else
-          part
+      if part[0] == ':'
+        placeholders << part[1..-1]
+        '([A-Za-z0-9_]+)'
+      else
+        part
         end
     end
 
     def draw(&block)
+      # require "pry"; binding.pry
       instance_eval(&block)
     end
 
@@ -50,7 +51,7 @@ module Petite
       find_match(match_path, url, request)
     end
 
-     def find_match(match_path, url, request)
+    def find_match(match_path, url, request)
       if match_path
         placeholder = {}
         match = match_path.first.match(url)
@@ -64,16 +65,12 @@ module Petite
         controller = Object.const_missing("#{controller_name}Controller")
         controller.action(request, match_path[1][:action])
       end
-      end
+     end
 
-      def convert_target(request, route)
-
-
-    end
     private
 
     def parse_to(option)
-      controller, action = option.split("#")
+      controller, action = option.split('#')
       { controller: controller.to_camel_case, action: action }
     end
   end
