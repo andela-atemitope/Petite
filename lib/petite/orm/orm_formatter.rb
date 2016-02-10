@@ -26,10 +26,6 @@ module Petite
       get_values
     end
 
-    # def fetch_model_name
-    #   @model_name = self.new
-    # end
-
     def self.property_keys
       @property.keys
     end
@@ -40,7 +36,7 @@ module Petite
     end
 
     def self.format_output(row)
-      model_name = new
+      model_name = self.new
       @property.each_key.with_index do |value, index|
         model_name.send("#{value}=", row[index])
       end

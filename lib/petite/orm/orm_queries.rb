@@ -8,22 +8,18 @@ module Petite
     def self.select_all
       result = SqlConnector.execute "SELECT #{@property.keys.join(',')} FROM #{@table_name}"
       result.map { |row| format_output(row) }
-      # return 'error message' if value == nil
     end
 
     def self.first
        SqlConnector.execute "SELECT * FROM #{table_name} ORDER BY #{table.id} ASC LIMIT 1"
-      # return "error message" if value == nil
     end
 
     def self.last
       SqlConnector.execute "SELECT * FROM #{table_name} ORDER BY #{table_name.id} DESC LIMIT 1"
-      # return "error message" if value == ni
     end
 
     def self.delete(id)
       SqlConnector.execute "DELETE FROM #{table_name} WHERE id = ?", id
-       # return "error message" if value == nil
     end
 
     def delete_all
@@ -32,7 +28,7 @@ module Petite
 
     def self.find_by(parameter, value)
       SqlConnector.execute "SELECT * FROM #{table_name} WHERE(#{parameter}: #{value})"
-      # return "error message" if value == nil
+
     end
 
     def self.table_name
