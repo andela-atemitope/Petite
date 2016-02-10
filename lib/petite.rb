@@ -12,9 +12,7 @@ module Petite
     attr_reader :request
     def call(env)
       @request = Rack::Request.new(env)
-      if request.path_info == '/favicon.ico'
-        return [404, {}, []]
-      end
+      return [404, {}, []] if request.path_info == '/favicon.ico'
       get_rack_app(request)
     end
 

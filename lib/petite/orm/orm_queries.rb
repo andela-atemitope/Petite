@@ -11,7 +11,7 @@ module Petite
     end
 
     def self.first
-       SqlConnector.execute "SELECT * FROM #{table_name} ORDER BY #{table.id} ASC LIMIT 1"
+      SqlConnector.execute "SELECT * FROM #{table_name} ORDER BY #{table.id} ASC LIMIT 1"
     end
 
     def self.last
@@ -28,15 +28,14 @@ module Petite
 
     def self.find_by(parameter, value)
       SqlConnector.execute "SELECT * FROM #{table_name} WHERE(#{parameter}: #{value})"
-
     end
 
-    def self.table_name
-      @table_name
+    class << self
+      attr_reader :table_name
     end
 
-    def method_missing(method, *args)
-      self.send(method)
+    def method_missing(method, *_args)
+      send(method)
     end
 
     def save
