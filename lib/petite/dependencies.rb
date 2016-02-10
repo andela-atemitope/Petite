@@ -4,3 +4,5 @@ class Object
     Object.const_get(const)
   end
 end
+
+

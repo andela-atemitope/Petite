@@ -4,7 +4,7 @@ require 'petite/dependencies.rb'
 require 'petite/utilities.rb'
 require 'petite/route.rb'
 require 'petite/resources.rb'
-require 'petite/orm.rb'
+require 'petite/orm/orm.rb'
 require 'pry'
 
 module Petite
@@ -12,7 +12,9 @@ module Petite
     attr_reader :request
     def call(env)
       @request = Rack::Request.new(env)
-      return [500, {}, []] if env['PATH_INFO'] == '/favicon.ico'
+      if request.path_info == '/favicon.ico'
+        return [404, {}, []]
+      end
       get_rack_app(request)
     end
 

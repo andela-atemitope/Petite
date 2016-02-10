@@ -7,7 +7,6 @@ module Petite
 
     def self.match(*verbs)
       verbs.each do |verb|
-
         define_method(verb) do |path, option = {}|
           url_parts = path.split('/')
           url_parts.select! { |part| !part.empty? }
@@ -34,11 +33,10 @@ module Petite
         '([A-Za-z0-9_]+)'
       else
         part
-        end
+      end
     end
 
     def draw(&block)
-      # require "pry"; binding.pry
       instance_eval(&block)
     end
 
