@@ -23,7 +23,7 @@ Petite's folder structure is
 
 Controllers are made up of one or more actions that are executed on request it either renders a template or redirects to another action. An action is defined as a public method on the controller, which will automatically be made accessible to the web-server through the Routes. It can send commands to the model to update the model's state (e.g., editing a document). It can also send commands to its associated view to change the view's presentation of the model
 
-`ApplicationController` should inherit from `Petite::BaseController` as seen in `application_controller.rb`
+`ApplicationController` should inherit from `Petite::Controller` as seen in `application_controller.rb`
 and all other controllers needed for your application can inherit from your `ApplicationController`  e.g  `SampleController`
 
 ```ruby
@@ -86,7 +86,7 @@ In the case of a request being made to an undefined route a 404 page is rendered
 The render method which enables rendering of ERB templates is automatically configured.
 Objects can be passed from the controller to the view by either assigning them as instance variables or by passing the object as a parameter to the render method:
 
-Having instance variable `@post` makes `post` object available to `views\posts\show.html.erb` and by default this is rendered without explicitly calling the render method.
+Having instance variable `@todo` makes `todo` object available to `views\todo\show.html.erb` and by default this is rendered without explicitly calling the render method.
 
 
 ```html
@@ -131,13 +131,13 @@ end
 ## Models
 
 Models are Ruby classes located in the models folder each model class represents an object e.g Post model represents the Post object andits data structures. They talk to the database, store and validate data and perform the business logic.
-All models should inherit from the `Petite::BaseModel`. The BaseModel comes with a host of methods for creating, saving, and finding data objects, all without having to use the structured query language. Also model classes should be named as a singular object.
+All models should inherit from the `Petite::PetiteRecord`. The BaseModel comes with a host of methods for creating, saving, and finding data objects, all without having to use the structured query language. Also model classes should be named as a singular object.
 
 Example model class displaying available methods:
 
 ```ruby
 #post.rb file
-class Post < Petite::BaseModel
+class Post < Petite::PetiteRecord
   to_table :posts
   #to_table method infers that this model models posts table in DB located in db/app.sqlite3
 
@@ -159,7 +159,19 @@ class Post < Petite::BaseModel
 end
 ```
 
-## Racking up your Application
+## External Dependencies
+
+These are listed below, with links and descriptions for each.
+
+[sqlite3](https://github.com/sparklemotion/sqlite3-ruby) - Allows Ruby programs to interface with the SQLite3 database engine
+[tilt](https://github.com/rtomayko/tilt) - Generic interface to multiple Ruby template engines
+[bundler](https://github.com/bundler/bundler) - Bundler provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed
+[rake](https://github.com/ruby/rake) - Rake is a Make-like program implemented in Ruby
+[rack](https://github.com/rack/rack) - Rack provides a minimal, modular and adaptable interface for developing web applications in Ruby
+[rack-test](https://github.com/brynary/rack-test) - Rack::Test is a small, simple testing API for Rack apps
+[minitest](https://github.com/seattlerb/minitest) - Minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking
+[Pry](https://rubygems.org/gems/pry/versions/0.10.3) - An IRB alternative and runtime developer console
+
 
 
 ## Running Tests
