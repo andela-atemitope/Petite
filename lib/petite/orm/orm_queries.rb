@@ -1,12 +1,13 @@
 module Petite
   class PetiteRecord
-    def self.select
-      result = SqlConnector.execute "SELECT * FROM #{@table_name} WHERE id = ?", id
-      format_output(result)
+
+    def self.find(id)
+      data = SqlConnector.execute("SELECT #{property_keys.join(',')} FROM #{@table_name} WHERE id = ?", "#{id}").first
+      format_output(data)
     end
 
     def self.select_all
-      result = SqlConnector.execute "SELECT #{@property.keys.join(',')} FROM #{@table_name}"
+      result = SqlConnector.execute "SELECT #{property_keys.join(',')} FROM #{@table_name}"
       result.map { |row| format_output(row) }
     end
 
@@ -19,7 +20,7 @@ module Petite
     end
 
     def self.delete(id)
-      SqlConnector.execute "DELETE * FROM #{table_name} WHERE id = ?", id
+      SqlConnector.execute "DELETE FROM #{table_name} WHERE id = #{id}"
     end
 
     def delete_all
@@ -28,6 +29,9 @@ module Petite
 
     def self.find_by(parameter, value)
       SqlConnector.execute "SELECT * FROM #{table_name} WHERE(#{parameter}: #{value})"
+    end
+
+    def find
 
     end
 

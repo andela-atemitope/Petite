@@ -36,7 +36,7 @@ module Petite
     end
 
     def self.format_output(row)
-      model_name = self.new
+      model_name = new
       @property.each_key.with_index do |value, index|
         model_name.send("#{value}=", row[index])
       end
