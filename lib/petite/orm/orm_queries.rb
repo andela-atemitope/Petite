@@ -19,7 +19,7 @@ module Petite
     end
 
     def self.delete(id)
-      SqlConnector.execute "DELETE FROM #{table_name} WHERE id = ?", id
+      SqlConnector.execute "DELETE * FROM #{table_name} WHERE id = ?", id
     end
 
     def delete_all
