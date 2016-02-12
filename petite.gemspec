@@ -35,5 +35,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_runtime_dependency 'pry'
   spec.add_runtime_dependency 'pry-nav'
-  spec.add_development_dependency 'minitest', '~> 5.0'
+  spec.add_development_dependency 'rack-test'
+  spec.add_development_dependency 'minitest'
+  spec.add_development_dependency 'simplecov'
+
 end
