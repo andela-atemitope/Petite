@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rack'
   spec.add_runtime_dependency 'tilt', '1.4.1'
   spec.add_runtime_dependency 'sqlite3'
-  spec.add_runtime_dependency 'bundler', '~> 1.11'
+  spec.add_runtime_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_runtime_dependency 'pry'
@@ -38,5 +38,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rack-test'
   spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'codeclimate-test-reporter'
 
 end
