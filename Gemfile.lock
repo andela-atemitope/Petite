@@ -6,6 +6,7 @@ PATH
       pry
       pry-nav
       rack
+      rspec
       sqlite3
       tilt (= 1.4.1)
 
