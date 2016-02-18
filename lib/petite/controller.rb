@@ -1,4 +1,4 @@
-require "tilt/erb"
+require "tilt"
 
 module Petite
   class Controller
