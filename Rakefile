@@ -3,12 +3,12 @@ require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:spec)
 
-task default: [:spec, :test]
+task default: :spec
 
-task :test do
-  Dir.glob("./spec/*/*_test.rb").each { |file| require file }
+# task :test do
+  # Dir.glob("./spec/*/*_test.rb").each { |file| require file }
  # Dir.glob("./test/*/*_spec.rb").each { |file| require file }
-end
+# end
 
 # Rake::TestTask.new(:test) do |t|
 #   t.libs << 'test'

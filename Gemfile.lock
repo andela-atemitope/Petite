@@ -4,7 +4,6 @@ PATH
     petite (0.2.0)
       bundler
       rack
-      rspec
       sqlite3
       tilt (= 1.4.1)
 

@@ -16,4 +16,4 @@ dependencies:
     - gem install simplecov
     - gem install codeclimate-test-reporter
   post:
-    - rake
+    - rspec
