@@ -8,5 +8,12 @@ dependencies:
     - gem install tilt
     - gem install pry
     - gem install pry-nav
+    - gem install rack
+    - gem install rspec
+    - gem install rake
+    - gem install rack-test
+    - gem install minitest
+    - gem install simplecov
+    - gem install codeclimate-test-reporter
   post:
     - rake
