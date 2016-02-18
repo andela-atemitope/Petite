@@ -42,5 +42,10 @@ module Petite
       end
       model_name
     end
+
+    def self.make_method
+      methods = @property.keys.map(&:to_sym)
+      methods.each { |method| attr_accessor method }
+    end
   end
 end

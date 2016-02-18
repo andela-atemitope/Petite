@@ -8,7 +8,7 @@ module Petite
     def self.match(*verbs)
       verbs.each do |verb|
         define_method(verb) do |path, option = {}|
-          url_parts = path.split('/')
+          url_parts = path.split("/")
           url_parts.select! { |part| !part.empty? }
           placeholders = []
           regexp_parts = url_parts.map do |part|
@@ -22,15 +22,15 @@ module Petite
     match :get, :post, :put, :patch, :delete
 
     def gather_routes(verb, regexp_parts, placeholders, option)
-      regexp = regexp_parts.join('/')
+      regexp = regexp_parts.join("/")
       routes[verb] << [Regexp.new("^/#{regexp}$"),
                        parse_to(option[:to]), placeholders]
     end
 
     def get_placeholder(placeholders, part)
-      if part[0] == ':'
+      if part[0] == ":"
         placeholders << part[1..-1]
-        '([A-Za-z0-9_]+)'
+        "([A-Za-z0-9_]+)"
       else
         part
       end
