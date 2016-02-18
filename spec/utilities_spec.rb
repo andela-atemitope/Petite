@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative "spec_helper"
 
 describe Todo do
   it "Makes string Camel Case" do

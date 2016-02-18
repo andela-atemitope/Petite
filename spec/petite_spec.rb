@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative "spec_helper"
 
 describe Petite::Application do
   let(:app) { Petite::Application.new }

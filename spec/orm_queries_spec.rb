@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative "spec_helper"
 
 describe "Petite Orm Queries" do
   it " deletes all rows in a table" do

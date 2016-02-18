@@ -1,5 +1,6 @@
 require_relative "../test_helper"
 require "rack/test"
+require "pry"
 class TestIntegrationApp < Minitest::Test
   include Rack::Test::Methods
   instance_eval do
@@ -39,9 +40,8 @@ class TestIntegrationApp < Minitest::Test
   end
 
   def test_creating_new_todo
-    Todo.delete_all
     create_todo
-    assert_equal Todo.select_all.size, 1
+    assert_equal Todo.all.size, 1
     Todo.delete_all
   end
 end

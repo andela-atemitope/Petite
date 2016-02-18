@@ -1,5 +1,4 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-$LOAD_PATH << File.join(File.dirname(__FILE__), "../../lib")
 
 require "simplecov"
 SimpleCov.start
@@ -13,3 +12,10 @@ require "petite"
 require "minitest/spec"
 require "minitest/autorun"
 require "minitest/unit"
+
+
+class MyTest < Minitest::Unit
+  after_tests do
+    FileUtils.rm_rf "petite.db"
+  end
+end

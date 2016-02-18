@@ -1,6 +1,6 @@
 class TodoController < Petite::Controller
   def index
-    @todo = Todo.select_all
+    @todo = Todo.all
   end
 
   def new

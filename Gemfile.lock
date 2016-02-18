@@ -3,7 +3,6 @@ PATH
   specs:
     petite (0.2.0)
       bundler
-      pry-nav
       rack
       rspec
       sqlite3
@@ -60,9 +59,10 @@ DEPENDENCIES
   minitest
   petite!
   pry
+  pry-nav
   rack-test
   rake (~> 10.0)
-  rspec (~> 3.0)
+  rspec
   simplecov
 
 BUNDLED WITH
