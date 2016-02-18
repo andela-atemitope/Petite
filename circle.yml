@@ -8,6 +8,5 @@ dependencies:
     - gem install tilt
     - gem install pry
     - gem install pry-nav
-    - 
   post:
     - rake
