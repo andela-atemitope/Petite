@@ -8,19 +8,21 @@ describe "Petite Orm Queries" do
 
   it "returns the first item in the database" do
     create_test_todo
-    expect(Todo.first).to include "Title for first todo"
+    result = Todo.all
+    expect(result.first.title).to eql "Title for first todo"
   end
 
   it "returns the last item in the database" do
     create_third_test_todo
+    Todo.last
     expect(Todo.last).to include "Body for third Todo"
   end
 
-  it "returns all item in the database" do
+  it "returns all items in the database" do
     create_test_todo
     create_second_test_todo
-    # binding.pry
-    expect(Todo.all).to include "Body for Second Todo"
+    expect(Todo.all.last.body).to eql "Body for Second Todo"
+    expect(Todo.all.first.body).to eql "Body for first todo"
   end
 
   it "deletes items from the database" do
@@ -28,11 +30,4 @@ describe "Petite Orm Queries" do
     id = Todo.first.id
     expect(Todo.delete(id)).to eql []
   end
-
-  # it "finds items from the database by id" do
-  #   create_posts
-  #   create_second_posts
-  #   search_title = Todo.first.title
-  #   expect(Todo.find_by(title, search_title)).to include "Body for first Todo"
-  # end
 end

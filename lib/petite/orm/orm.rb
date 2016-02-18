@@ -24,7 +24,8 @@ module Petite
         end
         property_array << prop_array_two.join(" ")
       end
-      query = "CREATE TABLE IF NOT EXISTS #{@table_name} (#{property_array.join(',')})"
+      query = "CREATE TABLE IF NOT EXISTS
+      #{@table_name} (#{property_array.join(',')})"
       SqlConnector.execute query
       make_method
     end

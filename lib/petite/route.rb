@@ -63,7 +63,7 @@ module Petite
         controller = Object.const_missing("#{controller_name}Controller")
         controller.action(request, match_path[1][:action])
       end
-     end
+    end
 
     private
 
