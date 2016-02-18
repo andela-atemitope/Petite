@@ -4,5 +4,6 @@ machine:
 dependencies:
   pre:
     - gem install bundler -v '~> 1.10'
+    - gem install sqlite3
   post:
     - rake
