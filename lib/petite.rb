@@ -12,7 +12,6 @@ module Petite
     attr_reader :request
     def call(env)
       @request = Rack::Request.new(env)
-<<<<<<< HEAD
       if request.path_info == "/favicon.ico"
         return [404, {}, []]
       end
@@ -29,10 +28,6 @@ module Petite
       is not a defined route. \n
       Check your /config/routes.rb to view all defined
       routes"]]
-=======
-      return [404, {}, []] if request.path_info == '/favicon.ico'
-      get_rack_app(request)
->>>>>>> 0276a91a7682d038574066c68167abc285160ea1
     end
 
     def route
