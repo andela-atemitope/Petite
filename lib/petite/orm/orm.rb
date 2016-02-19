@@ -30,6 +30,11 @@ module Petite
       make_method
     end
 
+    def self.make_method
+      methods = @property.keys.map(&:to_sym)
+      methods.each { |method| attr_accessor method }
+    end
+
     def self.fetch_primary_key(value = false)
       "primary key" if value
     end
@@ -39,7 +44,7 @@ module Petite
     end
 
     def self.fetch_nullable(value = true)
-      "not null" unless value
+      'not null' unless value
     end
 
     def self.fetch_type(value)

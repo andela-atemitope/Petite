@@ -9,13 +9,13 @@ module Petite
     def update_records_placeholders
       columns = self.class.property_keys
       columns.delete(:id)
-      columns.map { |col| "#{col}=?" }.join(",")
+      columns.map { |col| "#{col}=?" }.join(',')
     end
 
     def get_table_columns
       columns = self.class.property_keys
       columns.delete(:id)
-      columns.join(",")
+      columns.join(',')
     end
 
     def update_table_records
@@ -32,7 +32,7 @@ module Petite
 
     def new_record_placeholders
       properties = self.class.property_keys
-      (["?"] * (properties.size - 1)).join(",")
+      (['?'] * (properties.size - 1)).join(',')
     end
 
     def self.format_output(row)
@@ -41,11 +41,6 @@ module Petite
         model_name.send("#{value}=", row[index])
       end
       model_name
-    end
-
-    def self.make_method
-      methods = @property.keys.map(&:to_sym)
-      methods.each { |method| attr_accessor method }
     end
   end
 end

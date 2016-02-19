@@ -17,7 +17,7 @@ module Petite
     end
 
     def redirect_to(route)
-      @response = Rack::Response.new({}, 302, "location" => route)
+      @response = Rack::Response.new({}, 302, 'location' => route)
     end
 
     def get_response
@@ -34,7 +34,6 @@ module Petite
                                                         "layouts",
                                                         "application.html.erb"))
       template_title = view_name.to_s.tr("_", " ").capitalize
-
       view_template = Tilt::ERBTemplate.new(File.join($LOAD_PATH.first,
                                                       "app", "views",
                                                       controller_name,
