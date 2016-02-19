@@ -1,41 +1,53 @@
 module Petite
   class PetiteRecord
-    def self.select
-      result = SqlConnector.execute "SELECT * FROM #{@table_name} WHERE id = ?", id
-      format_output(result)
+    def self.find(id)
+      data = SqlConnector.execute("SELECT #{property_keys.join(',')}
+      FROM #{@table_name} WHERE id = ?", id.to_s).first
+      if data
+        format_output(data)
+      else
+        raise "This Id is Unavailable"
+      end
     end
 
-    def self.select_all
-      result = SqlConnector.execute "SELECT #{@property.keys.join(',')} FROM #{@table_name}"
+    def self.all
+      result = SqlConnector.execute "SELECT #{property_keys.join(',')}
+      FROM #{@table_name}"
       result.map { |row| format_output(row) }
     end
 
     def self.first
-      SqlConnector.execute "SELECT * FROM #{table_name} ORDER BY #{table.id} ASC LIMIT 1"
+      data = SqlConnector.execute "SELECT * FROM #{@table_name}
+      ORDER BY id LIMIT 1"
+      format_output(data[0])
     end
 
     def self.last
-      SqlConnector.execute "SELECT * FROM #{table_name} ORDER BY #{table_name.id} DESC LIMIT 1"
+      result = SqlConnector.execute "SELECT * FROM #{@table_name}
+      ORDER BY id DESC LIMIT 1"
+      result.first
     end
 
     def self.delete(id)
-      SqlConnector.execute "DELETE FROM #{table_name} WHERE id = ?", id
+      SqlConnector.execute "DELETE FROM #{@table_name}
+      WHERE id = #{id}"
     end
 
-    def delete_all
-      SqlConnector.execute "DELETE * FROM #{table_name}"
+    def self.delete_all
+      SqlConnector.execute "DELETE FROM #{@table_name}"
     end
 
     def self.find_by(parameter, value)
-      SqlConnector.execute "SELECT * FROM #{table_name} WHERE(#{parameter}: #{value})"
+      SqlConnector.execute "SELECT * FROM #{@table_name}
+      WHERE(#{parameter} = #{value})"
     end
 
     class << self
       attr_reader :table_name
     end
-
-    def method_missing(method, *_args)
-      send(method)
+    
+    def method_missing(method, *args)
+      self.send(method)
     end
 
     def save

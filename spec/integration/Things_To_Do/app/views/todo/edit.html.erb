@@ -1,0 +1,8 @@
+<h3>Edit Your Post </h3>
+<form class="" action="/todo/<%= @todo.id %>" method="post">
+  <input type="hidden" name="id" value="<%= @todo.id %>">
+  <input type="hidden" name="_method" value="put">
+  <input type="text" name="title" value="<%= @todo.title %>">
+  <textarea name="body" rows="10" cols="10" id="" class="materialize-textarea"><%= @todo.body %></textarea>
+  <button type="submit" class="btn"> Update</button>
+</form>

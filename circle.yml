@@ -1,0 +1,19 @@
+machine:
+  ruby:
+    version: 2.2.3
+dependencies:
+  pre:
+    - gem install bundler -v '~> 1.10'
+    - gem install sqlite3
+    - gem install tilt
+    - gem install pry
+    - gem install pry-nav
+    - gem install rack
+    - gem install rspec
+    - gem install rake
+    - gem install rack-test
+    - gem install minitest
+    - gem install simplecov
+    - gem install codeclimate-test-reporter
+  post:
+    - rspec

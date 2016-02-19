@@ -1,5 +1,9 @@
 # Petite
 
+[![Code Climate](https://codeclimate.com/github/andela-atemitope/Petite/badges/gpa.svg)](https://codeclimate.com/github/andela-atemitope/Petite)
+[![Circle CI](https://circleci.com/gh/andela-atemitope/Petite/tree/tests.svg?style=svg)](https://circleci.com/gh/andela-atemitope/Petite/tree/tests)
+
+
 
 Bored with Sinatra? You are in the right place!
 Petite is a [Domain_Specific-Language](http://en.wikipedia.org/wiki/Domain-specific_language) which uses the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) model for creating light weight web applications in Ruby with a [directory structure](http://www.tutorialspoint.com/ruby-on-rails/rails-directory-structure.htm) similar to Rails .
