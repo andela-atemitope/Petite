@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "petite"
+# require "minitest/autorun"
 
 class Todo < Petite::PetiteRecord
   to_table :todo
