@@ -1,6 +1,8 @@
 # Petite
 
 [![Code Climate](https://codeclimate.com/github/andela-atemitope/Petite/badges/gpa.svg)](https://codeclimate.com/github/andela-atemitope/Petite)
+[![Circle CI](https://circleci.com/gh/andela-atemitope/Petite/tree/tests.svg?style=svg)](https://circleci.com/gh/andela-atemitope/Petite/tree/tests)
+
 
 
 Bored with Sinatra? You are in the right place!
