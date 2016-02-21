@@ -10,6 +10,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    bigdecimal (1.2.7)
     codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
@@ -64,6 +65,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bigdecimal
   codeclimate-test-reporter
   coveralls
   minitest

@@ -2,12 +2,13 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
 
 require "petite"
-require "codeclimate-test-reporter"
-require "simplecov"
-SimpleCov.start
-# require 'coveralls'
-# Coveralls.wear!
-CodeClimate::TestReporter.start
+require "bigdecimal"
+# require "codeclimate-test-reporter"
+# require "simplecov"
+# SimpleCov.start
+require 'coveralls'
+Coveralls.wear!
+# CodeClimate::TestReporter.start
 
 
 class Todo < Petite::PetiteRecord
