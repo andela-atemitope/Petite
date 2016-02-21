@@ -2,10 +2,10 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
 
 require "petite"
-require "codeclimate-test-reporter"
+# require "codeclimate-test-reporter"
 require "simplecov"
 SimpleCov.start
-CodeClimate::TestReporter.start
+# CodeClimate::TestReporter.start
 
 
 class Todo < Petite::PetiteRecord

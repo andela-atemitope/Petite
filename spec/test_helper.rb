@@ -8,10 +8,10 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 # require './lib/petite/orm/orm_queries.rb'
 # require './lib/petite/orm/sql_connector.rb'
 require "petite"
-require "codeclimate-test-reporter"
+# require "codeclimate-test-reporter"
 require "simplecov"
 SimpleCov.start
-CodeClimate::TestReporter.start
+# CodeClimate::TestReporter.start
 require "simplecov"
 require "minitest/spec"
 require "minitest/autorun"
