@@ -5,6 +5,8 @@ require "petite"
 # require "codeclimate-test-reporter"
 require "simplecov"
 SimpleCov.start
+require 'coveralls'
+Coveralls.wear!
 # CodeClimate::TestReporter.start
 
 
