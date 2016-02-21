@@ -16,5 +16,6 @@ dependencies:
     - gem install simplecov
     - gem install codeclimate-test-reporter
     - gem install coveralls
+    - gem install bigdecimal
   post:
     - rspec
