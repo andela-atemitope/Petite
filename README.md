@@ -2,6 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/andela-atemitope/Petite/badges/gpa.svg)](https://codeclimate.com/github/andela-atemitope/Petite)
 [![Circle CI](https://circleci.com/gh/andela-atemitope/Petite/tree/tests.svg?style=svg)](https://circleci.com/gh/andela-atemitope/Petite/tree/tests)
+[![Coverage Status](https://coveralls.io/repos/github/andela-atemitope/Petite/badge.svg?branch=master)](https://coveralls.io/github/andela-atemitope/Petite?branch=master)
 
 
 
