@@ -1,10 +1,12 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
 
 require "petite"
-# require "minitest/autorun"
+require "codeclimate-test-reporter"
+require "simplecov"
+SimpleCov.start
+CodeClimate::TestReporter.start
+
 
 class Todo < Petite::PetiteRecord
   to_table :todo
