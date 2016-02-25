@@ -44,7 +44,7 @@ module Petite
     end
 
     def self.fetch_nullable(value = true)
-      'not null' unless value
+      "not null" unless value
     end
 
     def self.fetch_type(value)

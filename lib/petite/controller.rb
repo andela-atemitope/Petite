@@ -17,7 +17,7 @@ module Petite
     end
 
     def redirect_to(route)
-      @response = Rack::Response.new({}, 302, 'location' => route)
+      @response = Rack::Response.new({}, 302, "location" => route)
     end
 
     def get_response

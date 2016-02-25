@@ -2,7 +2,7 @@ module Petite
   class SqlConnector
     attr_reader :db
     def self.create_db
-      @db = SQLite3::Database.new File.join 'petite.db'
+      @db = SQLite3::Database.new File.join "petite.db"
     end
 
     def self.execute(query, args = nil)

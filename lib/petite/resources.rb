@@ -3,7 +3,7 @@ module Petite
     attr_reader :routes
 
     def root(address)
-      get('/', to: address)
+      get("/", to: address)
     end
 
     def resources(path)

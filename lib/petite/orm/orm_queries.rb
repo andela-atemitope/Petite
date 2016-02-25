@@ -45,9 +45,9 @@ module Petite
     class << self
       attr_reader :table_name
     end
-    
-    def method_missing(method, *args)
-      self.send(method)
+
+    def method_missing(method, *_args)
+      send(method)
     end
 
     def save
